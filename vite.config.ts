@@ -5,7 +5,8 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import viteSvgIcons from 'vite-plugin-svg-icons'
 //mock
 import { viteMockServe } from 'vite-plugin-mock'
-
+//inject title
+import { createHtmlPlugin } from 'vite-plugin-html'
 //setup name
 import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 
@@ -56,6 +57,11 @@ export default ({ command, mode }: any) => {
       //   }
       // }
     },
+    preview: {
+      port: 5003,
+      host: '0.0.0.0',
+      strictPort: true
+    },
     plugins: [
       vue(),
       vueJsx(),
@@ -87,7 +93,7 @@ export default ({ command, mode }: any) => {
         // resolvers: [ElementPlusResolver()],
         imports: [
           'vue',
-          'vuex',
+          'pinia',
           'vue-router',
           {
             '@/hooks/global/useCommon': ['useCommon'],
@@ -102,6 +108,15 @@ export default ({ command, mode }: any) => {
           globalsPropValue: true // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
         },
         dts: true //auto generation auto-imports.d.ts file
+      }),
+      // auto config of index.html title
+      createHtmlPlugin({
+        inject: {
+          // Inject data into ejs template
+          data: {
+            title: setting.title
+          }
+        }
       })
       // Components({
       //   resolvers: [ElementPlusResolver()]
@@ -147,7 +162,7 @@ export default ({ command, mode }: any) => {
             AtRule: {
               charset: (atRule) => {
                 if (atRule.name === 'charset') {
-                  atRule.remove();
+                  atRule.remove()
                 }
               }
             }

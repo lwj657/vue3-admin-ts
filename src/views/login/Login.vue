@@ -48,6 +48,7 @@ import settings from '@/settings'
 
 import { ElMessage } from 'element-plus'
 import { ObjTy } from '~/common'
+import { useUserStore } from '@/store/user'
 //element valid
 const formRules = useElement().formRules
 //form
@@ -87,7 +88,7 @@ watch(
  * */
 let loading = ref(false)
 let tipMessage = ref('')
-const store = useStore()
+
 const refloginForm: any = ref(null)
 let handleLogin = () => {
   refloginForm.value.validate((valid: any) => {
@@ -103,8 +104,9 @@ let handleLogin = () => {
 const router = useRouter()
 let loginReq = () => {
   loading.value = true
-  store
-    .dispatch('user/login', formInline)
+  const userStore = useUserStore()
+  userStore
+    .login(formInline)
     .then(() => {
       ElMessage({ message: '登录成功', type: 'success' })
       router.push({ path: state.redirect || '/', query: state.otherQuery })
@@ -205,6 +207,10 @@ $light_gray: #eee;
     color: #fff;
     height: 42px; //此处调整item的高度
     caret-color: #fff;
+  }
+  //hiden the input border
+  .el-input__inner {
+    box-shadow: none !important;
   }
 }
 </style>

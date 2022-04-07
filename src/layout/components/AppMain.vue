@@ -17,19 +17,19 @@
 
 <script setup lang="ts">
 import setting from '@/settings'
-import { useStore } from 'vuex'
+
 import { ObjTy } from '~/common'
-const store = useStore()
+import { useAppStore } from '@/store/app'
+
 const route = useRoute()
 const settings = computed(() => {
-  return store.state.app.settings
+  return appStore.settings
 })
 
-
-const key = computed(()=>route.path)
+const key = computed(() => route.path)
 
 const cachedViews = computed(() => {
-  return store.state.app.cachedViews
+  return appStore.cachedViews
 })
 
 /*listen the component name changing, then to keep-alive the page*/
@@ -38,9 +38,10 @@ const cachedViews = computed(() => {
 let oldRoute: ObjTy = {}
 let deepOldRouter: ObjTy | null = null
 
+const appStore = useAppStore()
 const removeDeepChildren = (deepOldRouter) => {
   deepOldRouter.children?.forEach((fItem) => {
-    store.commit('app/M_DEL_CACHED_VIEW_DEEP', fItem.name)
+    appStore.M_DEL_CACHED_VIEW_DEEP(fItem.name)
   })
 }
 
@@ -53,21 +54,21 @@ watch(
     if (routerLevel === 2) {
       if (deepOldRouter?.name) {
         if (deepOldRouter.meta?.leaveRmCachePage && deepOldRouter.meta?.cachePage) {
-          store.commit('app/M_DEL_CACHED_VIEW', deepOldRouter.name)
+          appStore.M_DEL_CACHED_VIEW(deepOldRouter.name)
           //remove the deepOldRouter‘s children component
           removeDeepChildren(deepOldRouter)
         }
       } else {
         if (oldRoute?.name) {
           if (oldRoute.meta?.leaveRmCachePage && oldRoute.meta?.cachePage) {
-            store.commit('app/M_DEL_CACHED_VIEW', oldRoute.name)
+            appStore.M_DEL_CACHED_VIEW(oldRoute.name)
           }
         }
       }
 
       if (route.name) {
         if (route.meta?.cachePage) {
-          store.commit('app/M_ADD_CACHED_VIEW', route.name)
+          appStore.M_ADD_CACHED_VIEW(route.name)
         }
       }
       deepOldRouter = null
@@ -81,7 +82,7 @@ watch(
       //一般为三级路由跳转三级路由的情况
       if (deepOldRouter?.name && deepOldRouter.name !== parentRoute.name) {
         if (deepOldRouter.meta?.leaveRmCachePage && deepOldRouter.meta?.cachePage) {
-          store.commit('app/M_DEL_CACHED_VIEW', deepOldRouter.name)
+          appStore.M_DEL_CACHED_VIEW(deepOldRouter.name)
           //remove the deepOldRouter‘s children component
           removeDeepChildren(deepOldRouter)
         }
@@ -89,7 +90,7 @@ watch(
         //否则走正常两级路由处理流程
         if (oldRoute?.name) {
           if (oldRoute.meta?.leaveRmCachePage && oldRoute.meta?.cachePage) {
-            store.commit('app/M_DEL_CACHED_VIEW_DEEP', oldRoute.name)
+            appStore.M_DEL_CACHED_VIEW_DEEP(oldRoute.name)
           }
         }
       }
@@ -98,8 +99,8 @@ watch(
         if (route.meta?.cachePage) {
           deepOldRouter = parentRoute
           //取的是第二级的name和第三级的name进行缓存
-          store.commit('app/M_ADD_CACHED_VIEW', deepOldRouter.name)
-          store.commit('app/M_ADD_CACHED_VIEW_DEEP', route.name)
+          appStore.M_ADD_CACHED_VIEW(deepOldRouter.name)
+          appStore.M_ADD_CACHED_VIEW_DEEP(route.name)
         }
       }
     }
