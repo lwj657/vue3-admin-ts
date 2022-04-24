@@ -50,7 +50,7 @@ const setting: SettingTy = {
    * @type {boolean} true | false
    * @description Whether show TagsView
    */
-  showTagsView: true,
+  showTagsView: false,
   /**
    * @description TagsView show number
    */
@@ -79,9 +79,9 @@ const setting: SettingTy = {
    */
   isNeedLogin: true,
   /**
-   * @type {string} 'roles' | 'code'
+   * @type {string} 'roles' | 'code' | 'roleCode'
    */
-  permissionMode: 'roles',
+  permissionMode: 'roleCode',
   /**
    * @type {boolean} true | false
    * @description Whether  open prod mock
