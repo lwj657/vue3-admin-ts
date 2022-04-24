@@ -74,7 +74,7 @@ ResizeHook()
     width: 0 !important;
   }
   .main-container {
-    margin-left: 0;
+    margin-left: 0 !important;
   }
 }
 </style>
