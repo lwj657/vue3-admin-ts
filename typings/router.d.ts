@@ -11,6 +11,7 @@ export interface RouteItemTy {
   meta?: {
     title: string
     icon?: string
+    pathKey?: string
     affix?: boolean
     activeMenu?: string
     breadcrumb?: boolean
