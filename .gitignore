@@ -8,8 +8,4 @@ dist-ssr
 yarn*
 ts-out-dir
 pnpm*
-<<<<<<< HEAD
 package-lock.json
-=======
-package-lock.json
->>>>>>> master
