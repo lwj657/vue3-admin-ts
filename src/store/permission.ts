@@ -69,6 +69,33 @@ export function filterAsyncRoutes(routes: RouterTy, roles: Array<string>) {
   return res
 }
 
+function hasRouterPermission(userRoute: RouterTy, route: RouterRowTy, _sysRole: number) {
+  if (route.meta && route.meta.pathKey) {
+    const pathRouteKey = route.meta.pathKey
+    return userRoute.some((item) => item.path === pathRouteKey)
+  } else {
+    return true
+  }
+}
+
+export function filterRouterByRoleCode(routes: RouterTy, userRouters: RouterTy, sysRole: number) {
+  if (sysRole === 4 || sysRole === 5) {
+    return routes
+  } else {
+    const res = [] as RouterTy
+    routes.forEach((route) => {
+      const tmp = { ...route }
+      if (hasRouterPermission(userRouters, tmp, sysRole)) {
+        if (tmp.children) {
+          tmp.children = filterRouterByRoleCode(tmp.children, userRouters, sysRole)
+        }
+        res.push(tmp)
+      }
+    })
+    return res
+  }
+}
+
 export const usePermissionStore = defineStore('permission', {
   /***
    *类似于组件的 data数据的 ,用来存储全局状态的
@@ -99,7 +126,7 @@ export const usePermissionStore = defineStore('permission', {
     },
     generateRoutes(roles: Array<string>) {
       return new Promise(async (resolve) => {
-        let accessedRoutes
+        let accessedRoutes: any
         if (settings.permissionMode === 'roles') {
           //filter by role
           if (roles.includes('admin')) {
@@ -110,14 +137,15 @@ export const usePermissionStore = defineStore('permission', {
         } else {
           //filter by codeArr
           //req code arr
-          let codeArr: any = localStorage.getItem('codeArr')
-          if (codeArr) {
-            codeArr = JSON.parse(codeArr)
-          } else {
-            localStorage.setItem('codeArr', JSON.stringify([1]))
-            codeArr = localStorage.getItem('codeArr')
-          }
-          accessedRoutes = await filterRouterByCodeArr(codeArr, asyncRoutes)
+          // let codeArr: any = localStorage.getItem('codeArr')
+          // if (codeArr) {
+          //   codeArr = JSON.parse(codeArr)
+          // } else {
+          //   localStorage.setItem('codeArr', JSON.stringify([1]))
+          //   codeArr = localStorage.getItem('codeArr')
+          // }
+          // accessedRoutes = await filterRouterByCodeArr(codeArr, asyncRoutes)
+          accessedRoutes = filterRouterByRoleCode(asyncRoutes, [], 4)
         }
         // commit('M_routes', accessedRoutes)
         resolve(accessedRoutes)
