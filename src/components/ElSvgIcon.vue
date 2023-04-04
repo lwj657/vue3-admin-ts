@@ -4,7 +4,11 @@
   </el-icon>
 </template>
 
+<<<<<<< HEAD
 <script setup>
+=======
+<script setup lang="ts">
+>>>>>>> dc5f3b2b2b09549f2d0a09a90ace81c4d3883b1e
 import * as ElSvg from '@element-plus/icons-vue'
 const props = defineProps({
   name: {
@@ -23,7 +27,10 @@ const props = defineProps({
     type: String
   }
 })
+<<<<<<< HEAD
 let { name } = props
+=======
+>>>>>>> dc5f3b2b2b09549f2d0a09a90ace81c4d3883b1e
 </script>
 
 <style scoped lang="scss">

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .history
 .idea
 node_modules
@@ -9,3 +10,56 @@ yarn*
 ts-out-dir
 pnpm*
 package-lock.json
+=======
+# compiled output
+/dist
+/dist-ssr
+/node_modules
+
+#lock
+pnpm-lock.yaml
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS
+.DS_Store
+
+# Tests
+/coverage
+/.nyc_output
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Other
+.history
+*.local
+yarn*
+pnpm*
+
+
+#.eslintrc-auto-import.json
+#auto-imports.d.ts
+#components.d.ts
+stats.html
+>>>>>>> dc5f3b2b2b09549f2d0a09a90ace81c4d3883b1e

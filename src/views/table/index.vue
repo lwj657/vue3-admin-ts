@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="app-container scroll-y">
     <el-table v-loading="listLoading" :data="list" element-loading-text="Loading" border highlight-current-row>
       <el-table-column align="center" label="ID" width="95">
@@ -67,5 +68,11 @@ const fetchData = () => {
 //导出属性到页面中使用
 const { list, listLoading } = toRefs(state)
 </script>
+=======
+  <div>table</div>
+</template>
+
+<script setup lang="ts"></script>
+>>>>>>> dc5f3b2b2b09549f2d0a09a90ace81c4d3883b1e
 
 <style scoped lang="scss"></style>

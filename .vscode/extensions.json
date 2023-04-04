@@ -1,8 +1,12 @@
 {
+<<<<<<< HEAD
   "recommendations": [
     "johnsoncodehk.volar",
     "johnsoncodehk.vscode-typescript-vue-plugin",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode"
   ]
+=======
+  "recommendations": ["johnsoncodehk.volar", "esbenp.prettier-vscode","dbaeumer.vscode-eslint"]
+>>>>>>> dc5f3b2b2b09549f2d0a09a90ace81c4d3883b1e
 }

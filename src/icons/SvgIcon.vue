@@ -4,6 +4,7 @@
   </svg>
 </template>
 
+<<<<<<< HEAD
 <script lang="ts">
 export default defineComponent({
   props: {
@@ -19,22 +20,35 @@ export default defineComponent({
     //   type: String,
     //   default: '#889aa4',
     // },
+=======
+<script setup lang="ts">
+import { computed, defineComponent } from 'vue'
+const props = defineProps({
+  iconClass: {
+    type: String,
+    required: true
+>>>>>>> dc5f3b2b2b09549f2d0a09a90ace81c4d3883b1e
   },
-  setup(props) {
-    return {
-      iconName: computed(() => `#icon-${props.iconClass}`),
-      svgClass: computed(() => {
-        if (props.className) {
-          return `svg-icon ${props.className}`
-        }
-        return 'svg-icon'
-      })
-    }
+  className: {
+    type: String,
+    default: ''
   }
+})
+
+const iconName = computed(() => `#icon-${props.iconClass}`)
+const svgClass = computed(() => {
+  if (props.className) {
+    return `svg-icon ${props.className}`
+  }
+  return 'svg-icon'
 })
 </script>
 
+<<<<<<< HEAD
 <style scope lang="scss">
+=======
+<style scoped lang="scss">
+>>>>>>> dc5f3b2b2b09549f2d0a09a90ace81c4d3883b1e
 .sub-el-icon,
 .nav-icon {
   display: inline-block;

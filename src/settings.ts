@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 interface SettingTy {
   title: string
   sidebarLogo: boolean
@@ -21,6 +22,12 @@ interface SettingTy {
 
 const setting: SettingTy = {
   title: 'Vue3 Admin Ts',
+=======
+import packageJson from '../package.json'
+import type { SettingsConfig } from '~/basic'
+export const settings: SettingsConfig = {
+  title: packageJson.name,
+>>>>>>> dc5f3b2b2b09549f2d0a09a90ace81c4d3883b1e
   /**
    * @type {boolean} true | false
    * @description Whether show the logo in sidebar
@@ -50,7 +57,11 @@ const setting: SettingTy = {
    * @type {boolean} true | false
    * @description Whether show TagsView
    */
+<<<<<<< HEAD
   showTagsView: false,
+=======
+  showTagsView: true,
+>>>>>>> dc5f3b2b2b09549f2d0a09a90ace81c4d3883b1e
   /**
    * @description TagsView show number
    */
@@ -65,7 +76,11 @@ const setting: SettingTy = {
    * @type {boolean} true | false
    * @description Whether need animation of main area
    */
+<<<<<<< HEAD
   mainNeedAnimation: true,
+=======
+  mainNeedAnimation: false,
+>>>>>>> dc5f3b2b2b09549f2d0a09a90ace81c4d3883b1e
   /**
    * @type {boolean} true | false
    * @description Whether need nprogress
@@ -79,9 +94,15 @@ const setting: SettingTy = {
    */
   isNeedLogin: true,
   /**
+<<<<<<< HEAD
    * @type {string} 'roles' | 'code' | 'roleCode'
    */
   permissionMode: 'roleCode',
+=======
+   * @type {string} 'rbac'| 'roles' | 'code'
+   */
+  permissionMode: 'roles',
+>>>>>>> dc5f3b2b2b09549f2d0a09a90ace81c4d3883b1e
   /**
    * @type {boolean} true | false
    * @description Whether  open prod mock
@@ -105,9 +126,36 @@ const setting: SettingTy = {
 
   /*
    * vite.config.js base config
+<<<<<<< HEAD
    * such as
    * */
   viteBasePath: '/vue3-admin-ts/'
+=======
+   * */
+  viteBasePath: './',
+
+  /*
+   * i18n setting default language
+   * en/zh
+   * */
+  defaultLanguage: 'en',
+  /*
+   *  default theme
+   * base-theme/lighting-theme/dark-theme
+   * */
+  defaultTheme: 'base-theme',
+  /*
+   * setting default defaultSize
+   * large / default /small
+   * */
+  defaultSize: 'small',
+  /*
+   * vite.config.js base config
+   * such as
+   * */
+  //平台id  2->vue3-admin-plus
+  plateFormId: 2
+>>>>>>> dc5f3b2b2b09549f2d0a09a90ace81c4d3883b1e
 }
 
-export default setting
+export default settings

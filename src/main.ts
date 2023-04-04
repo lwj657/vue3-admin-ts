@@ -1,5 +1,9 @@
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import ElementPlus from 'element-plus'
 import App from './App.vue'
+<<<<<<< HEAD
 const app = createApp(App)
 import router from './router'
 import '@/styles/index.scss' // global css
@@ -19,11 +23,25 @@ app.use(ElementPlus, { size: 'mini', locale: zhCn })
 // //import axios req
 // import axiosReq from '@/utils/axiosReq'
 // app.config.globalProperties.$axiosReq = axiosReq
+=======
+import router from './router'
+
+//import theme
+import './theme/index.scss'
+
+//import unocss
+import 'uno.css'
+
+//i18n
+import { setupI18n } from '@/lang'
+
+import '@/styles/index.scss' // global css
+>>>>>>> dc5f3b2b2b09549f2d0a09a90ace81c4d3883b1e
 
 //svg-icon
-//import svg-icon doc in  https://github.com/anncwb/vite-plugin-svg-icons/blob/main/README.zh_CN.md
 import 'virtual:svg-icons-register'
 import svgIcon from '@/icons/SvgIcon.vue'
+<<<<<<< HEAD
 app.component('SvgIcon', svgIcon)
 
 //global mount moment-mini
@@ -49,3 +67,31 @@ import { createPinia } from 'pinia'
 app.use(createPinia())
 
 app.use(router).mount('#app')
+=======
+import directive from '@/directives'
+
+//import router intercept
+import './permission'
+
+//import element-plus
+import 'element-plus/dist/index.css'
+const app = createApp(App)
+
+//router
+app.use(router)
+
+//pinia
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
+app.use(pinia)
+
+//i18n
+app.use(setupI18n)
+app.component('SvgIcon', svgIcon)
+directive(app)
+
+//element-plus
+app.use(ElementPlus)
+
+app.mount('#app')
+>>>>>>> dc5f3b2b2b09549f2d0a09a90ace81c4d3883b1e

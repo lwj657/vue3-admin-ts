@@ -1,29 +1,41 @@
 // vue global transition css define
+<<<<<<< HEAD
 /* fade */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s;
+=======
+/* sidebar-logo-fade */
+.sidebar-logo-fade-enter-active {
+  transition: opacity var(--logo-switch-duration);
+>>>>>>> dc5f3b2b2b09549f2d0a09a90ace81c4d3883b1e
 }
-
-.fade-enter-from,
-.fade-leave-active {
+.sidebar-logo-fade-enter-from,
+.sidebar-logo-fade-leave-to {
   opacity: 0;
 }
 
 /* fade-transform AppMain*/
 .fade-transform-leave-active,
 .fade-transform-enter-active {
+<<<<<<< HEAD
   transition: all 0.3s;
+=======
+  transition: all var(--page-transform-duration);
+>>>>>>> dc5f3b2b2b09549f2d0a09a90ace81c4d3883b1e
 }
 
 .fade-transform-enter-from {
   opacity: 0;
-  transform: translateX(-30px);
+  transform: translateX(-10px);
 }
 
 .fade-transform-leave-to {
   opacity: 0;
-  transform: translateX(30px);
+  transform: translateX(10px);
+}
+.fade-transform-active {
+  position: absolute;
 }
 .fade-transform-active {
   position: absolute;
@@ -32,13 +44,17 @@
 /* breadcrumb transition */
 .breadcrumb-enter-active,
 .breadcrumb-leave-active {
+<<<<<<< HEAD
   transition: all 0.3s;
+=======
+  transition: all var(--breadcrumb-change-duration);
+>>>>>>> dc5f3b2b2b09549f2d0a09a90ace81c4d3883b1e
 }
 
 .breadcrumb-enter-from,
 .breadcrumb-leave-active {
   opacity: 0;
-  transform: translateX(20px);
+  transform: translateX(10px);
 }
 
 .breadcrumb-leave-active {

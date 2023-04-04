@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
@@ -56,4 +57,15 @@
   //  "exclude": [
   ////    "src/src1.ts"
   //  ]
+=======
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["src/*"],
+      "~/*": ["typings/*"]
+    }
+  },
+  "include": ["src", "typings"],
+  "exclude": ["node_modules", "**/dist"]
+>>>>>>> dc5f3b2b2b09549f2d0a09a90ace81c4d3883b1e
 }

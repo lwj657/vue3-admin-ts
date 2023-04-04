@@ -30,11 +30,19 @@
   </div>
 </template>
 
+<<<<<<< HEAD
 <script setup lang="ts">
 import errGif from '@/assets/401_images/401.gif'
 
 const state = reactive({
   errGif: errGif + '?' + +new Date(),
+=======
+<script setup>
+import errGif from '@/assets/401_images/401.gif'
+
+const state = reactive({
+  errGif: `${errGif  }?${  Date.now()}`,
+>>>>>>> dc5f3b2b2b09549f2d0a09a90ace81c4d3883b1e
   ewizardClap: 'https://wpimg.wallstcn.com/007ef517-bafd-4066-aae4-6883632d9646',
   dialogVisible: false
 })

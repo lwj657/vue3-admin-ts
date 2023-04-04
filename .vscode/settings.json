@@ -1,6 +1,10 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+<<<<<<< HEAD
   "npm.packageManager": "yarn",
   "typescript.tsdk": "node_modules/typescript/lib",
   "vetur.validation.script": false
+=======
+  "npm.packageManager": "yarn"
+>>>>>>> dc5f3b2b2b09549f2d0a09a90ace81c4d3883b1e
 }
